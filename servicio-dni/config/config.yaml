@@ -1,0 +1,16 @@
+mysql:
+  host: "bd-mysql"
+  port: 3306
+  user: "root"
+  password: "secret"
+  database: "dni_db"
+
+# RabbitMQ realmente ya lo leemos de variables de entorno en dni_consumer.py,
+# pero puedes dejarlo “por defecto” así:
+rabbitmq:
+  host: "rabbitmq"
+  port: 5672
+  exchange: "my_exchange"
+  queue_nuevo: "registro.nuevo"
+  queue_validado: "registro.validado"
+  queue_rechazado: "registro.rechazado"

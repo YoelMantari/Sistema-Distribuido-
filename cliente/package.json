@@ -1,0 +1,19 @@
+{
+  "name": "cliente-rabbitmq",
+  "version": "1.0.0",
+  "description": "Cliente CLI para el sistema distribuido (Nodo C). Publica en registro.nuevo y escucha registro.guardado/registro.rechazado.",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "loadtest": "node load_test/generar_1000.js"
+  },
+  "dependencies": {
+    "amqplib": "^0.10.3",
+    "dotenv": "^16.0.0",
+    "inquirer": "^9.0.0"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^7.0.0"
+  }
+}

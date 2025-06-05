@@ -1,0 +1,112 @@
+# ================================
+# Ignorar archivos temporales y de sistema
+# ================================
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux
+*~
+
+# Archivos de log
+*.log
+
+# ================================
+# Ignorar carpetas de IDE y editores
+# ================================
+# VSCode
+.vscode/
+
+# IntelliJ / IDEA
+.idea/
+*.iml
+*.iws
+*.ipr
+
+# Eclipse
+.metadata/
+*.classpath
+*.project
+*.settings/
+
+# ================================
+# Ignorar cosas de Docker
+# ================================
+# Archivos generados por docker-compose
+docker-compose.override.yml
+
+# ================================
+# Ignorar la carpeta de dependencias del cliente (Node.js)
+# ================================
+# ----------------
+# /cliente
+# ----------------
+/cliente/node_modules/
+# Carpeta de build (si aplica)
+/cliente/dist/
+/cliente/build/
+#/cliente/.env
+
+# ================================
+# Ignorar artefactos de Java / Spring Boot
+# ================================
+# ----------------
+# /servicio-ventas
+# ----------------
+/servicio-ventas/target/
+/servicio-ventas/*.jar
+/servicio-ventas/*.war
+# Archivos de configuración generados por compilación
+/servicio-ventas/.mvn/
+/servicio-ventas/mvnw*
+/servicio-ventas/*.log
+
+# ================================
+# Ignorar artefactos de Python / FastAPI
+# ================================
+# ----------------
+# /servicio-dni
+# ----------------
+/servicio-dni/__pycache__/
+/servicio-dni/*.pyc
+/servicio-dni/*.pyo
+/servicio-dni/.pytest_cache/
+/servicio-dni/.venv/
+/servicio-dni/venv/
+/servicio-dni/env/
+/servicio-dni/*.log
+/servicio-dni/*.sqlite3
+/servicio-dni/.env
+
+# ================================
+# Ignorar IDEs y entornos virtuales en la raíz o compartidos
+# ================================
+# Virtualenv / conda
+.venv/
+env/
+venv/
+__pycache__/
+*.py[cod]
+
+# ================================
+# Ignorar archivos de configuración sensibles
+# ================================
+# Si algún config.yaml o .env contiene credenciales, se puede ignorar, 
+# pero asegúrate de incluir plantillas (config.yaml.example) en el repositorio.
+/*.env
+/*.env.*
+/config/*.env
+/config/*.secret
+
+# ================================
+# Ignorar cualquier archivo de sistema u operativo adicional
+# ================================
+# Swap, volcado de memoria, etc.
+/*.swp
+/*.swo
