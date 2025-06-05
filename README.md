@@ -302,18 +302,20 @@ Dentro de la carpeta `cliente/load_test/` existe un script `generar_1000.js` que
 
 ### 6.1 MySQL (`servicio-dni`)
 
-Para acceder al contenedor MySQL:
+Para acceder a la base de datos en  MySQL:
 
 ```bash
-docker exec -it sd-mysql mysql -uroot -psecret
+mysql -h centerbeam.proxy.rlwy.net -u root -p --port 35140 --protocol=TCP railway
+xmmvAFJemHPNrmudTkCRqZCnBStzBxrZ
+
 ```
 
 Dentro del prompt de MySQL:
 
 ```sql
-USE dni_db;
-SELECT COUNT(*) FROM padron_dni;
+USE railway;
 SELECT * FROM padron_dni LIMIT 5;
+SELECT COUNT(*) FROM padron_dni;
 ```
 
 ### 6.2 PostgreSQL (`servicio-ventas`)

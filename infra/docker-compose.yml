@@ -66,25 +66,25 @@ services:
   #########################
   # 4) MySQL para servicio-dni
   #########################
-  bd-mysql:
-    image: mysql:8
-    container_name: sd-mysql
-    environment:
-      MYSQL_ROOT_PASSWORD: secret
-      MYSQL_DATABASE: dni_db
-    volumes:
-      # El init_db.sql está en ../servicio-dni/scripts/
-      - ../servicio-dni/scripts/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql:ro
-    ports:
-      - "3307:3306"
-    networks:
-      - sd-network
+  # bd-mysql:
+  #   image: mysql:8
+  #   container_name: sd-mysql
+  #   environment:
+  #     MYSQL_ROOT_PASSWORD: secret
+  #     MYSQL_DATABASE: dni_db
+  #   volumes:
+  #     # El init_db.sql está en ../servicio-dni/scripts/
+  #     - ../servicio-dni/scripts/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql:ro
+  #   ports:
+  #     - "3307:3306"
+  #   networks:
+  #     - sd-network
 
-    healthcheck:
-      test: ["CMD", "mysqladmin", "ping", "--silent", "-h", "localhost", "-P", "3306"]
-      interval: 5s
-      timeout: 3s
-      retries: 5
+  #   healthcheck:
+  #     test: ["CMD", "mysqladmin", "ping", "--silent", "-h", "localhost", "-P", "3306"]
+  #     interval: 5s
+  #     timeout: 3s
+  #     retries: 5
 
   #########################
   # 5) servicio-dni (Python + FastAPI)
@@ -97,14 +97,14 @@ services:
     depends_on:
       rabbitmq:
         condition: service_started
-      bd-mysql:
-        condition: service_healthy
+      #bd-mysql:
+      #  condition: service_healthy
     environment:
-      MYSQL_HOST:     bd-mysql
-      MYSQL_PORT:     3306
-      MYSQL_USER:     root
-      MYSQL_PASSWORD: secret
-      MYSQL_DATABASE: dni_db
+      MYSQL_HOST: centerbeam.proxy.rlwy.net  
+      MYSQL_PORT: 35140  
+      MYSQL_USER: root  
+      MYSQL_PASSWORD: xmmvAFJemHPNrmudTkCRqZCnBStzBxrZ  
+      MYSQL_DATABASE: railway
       RABBITMQ_HOST:  rabbitmq
       RABBITMQ_PORT:  5672
     ports:
