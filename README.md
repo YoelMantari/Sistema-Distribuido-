@@ -25,68 +25,57 @@ No es necesario tener instalado Java ni Python en la máquina anfitriona, ya que
 
 ```plaintext
 sistema-distribuido/
-├── cliente/                      ← Código del cliente Node.js (CLI)
+├── cliente/
 │   ├── helpers/
 │   │   ├── prompt.js
 │   │   └── validator.js
 │   ├── load_test/
 │   │   └── generar_1000.js
-│   ├── node_modules/
 │   ├── .env
-│   ├── Dockerfile                ← (opcional, si quisieras contenerizar el cliente)
+│   ├── Dockerfile
 │   ├── index.js
 │   ├── package.json
 │   └── package-lock.json
 │
-├── infra/                        ← Aquí está todo lo relacionado con Docker Compose
-│   ├── rabbitmq/
-│   │   └── rabbitmq.conf
-│   ├── servicio-ventas/
-│   │   ├── scripts/
-│   │   │   └── init_db.sql        ← Script de creación de tablas en PostgreSQL
-│   │   ├── src/
-│   │   │   └── main/java/com/ventas/
-│   │   │       ├── config/
-│   │   │       │   ├── JacksonConfig.java
-│   │   │       │   └── RabbitConfig.java
-│   │   │       ├── messaging/
-│   │   │       │   └── RegistroListener.java
-│   │   │       ├── model/
-│   │   │       │   └── Cliente.java
-│   │   │       ├── repository/
-│   │   │       │   └── ClienteRepository.java
-│   │   │       └── service/
-│   │   │           ├── ClienteService.java
-│   │   │           └── VentasApplication.java
-│   │   └── src/main/resources/
-│   │       └── application.properties
-│   │   ├── Dockerfile
-│   │   └── pom.xml
-│   │
-│   ├── servicio-dni/
-│   │   ├── config/
-│   │   │   └── config.yaml         ← Parámetros de conexión a MySQL y RabbitMQ
-│   │   ├── scripts/
-│   │   │   └── init_db.sql         ← Script de creación de tabla padron_dni en MySQL
-│   │   ├── src/
-│   │   │   ├── __init__.py
-│   │   │   ├── dni_consumer.py
-│   │   │   ├── dni_service.py
-│   │   │   └── schemas.py
-│   │   ├── app.py
-│   │   ├── Dockerfile
-│   │   └── requirements.txt
-│   │
-│   └── docker-compose.yml         ← Archivo principal para orquestar todos los contenedores
+├── infra/
+│   └── rabbitmq/
+│   │     └── rabbitmq.conf  
+│   │── docker-compose.yml
 │
+├── servicio-dni/
+│   ├── config/
+│   │   └── config.yaml
+│   ├── scripts/
+│   │   └── init_db.sql
+│   ├── src/
+│   │   ├── dni_consumer.py
+│   │   ├── dni_service.py
+│   │   └── schemas.py
+│   ├── app.py
+│   ├── Dockerfile
+│   └── requirements.txt
+│
+├── servicio-ventas/
+│   ├── Dockerfile
+│   ├── pom.xml
+│   ├── src/
+│   │   └── main/
+│   │       ├── java/com/ventas/
+│   │       └── resources/
+│   │           └── application.properties
+│   └── scripts/
+│       └── init_db.sql
+│
+├
 ├── .gitignore
-└── README.md                     ← Este archivo
+└── README.md
+
 ```
 
 * **cliente/**
   Código JavaScript (Node.js) que se ejecuta en la máquina local sin Docker.
 * **infra/**
-  Carpeta donde se encuentra el `docker-compose.yml` y las carpetas con los Dockerfiles y scripts para los servicios “servicio-ventas” y “servicio-dni”, además de la configuración de RabbitMQ.
+  Carpeta donde se encuentra el `docker-compose.yml`  además de la configuración de RabbitMQ.
 * **servicio-ventas/**
   Servicio Java 17 + Spring Boot que se conecta a PostgreSQL.
 * **servicio-dni/**
@@ -369,4 +358,5 @@ SELECT * FROM amigos LIMIT 5;
   ```bash
   docker-compose down
   ```
+
 
